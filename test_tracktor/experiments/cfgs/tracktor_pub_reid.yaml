@@ -1,0 +1,71 @@
+#==========================================================================
+# This file is under License LGPL-3.0 (see details in the license file).
+# This file is a part of implementation for paper:
+# How To Train Your Deep Multi-Object Tracker.
+# This contribution is headed by Perception research team, INRIA.
+# Contributor(s) : Yihong Xu
+# INRIA contact  : yihong.xu@inria.fr
+# created on 16th April 2020.
+# the code is modified based on:
+# https://github.com/phil-bergmann/tracking_wo_bnw/tree/iccv_19
+#==========================================================================
+
+tracktor:
+  name: Tracktor++
+  # Subfolder name in output/tracker/
+  module_name: MOT17
+  desription:
+  seed: 12345
+  # frcnn or fpn
+  network: fpn
+
+  # data_dir
+  data_pth: EnterYourDataRootPathintracktor_pubReid.yaml
+
+  # output_dir
+  output_dir: /output/log/
+
+  # fpn
+  obj_detect_weights: EnterYourModelPthintracktor_pubReid.yaml
+  obj_detect_config: /output/fpn/res101/mot_2017_train/voc_init_iccv19/config.yaml
+
+  interpolate: False
+  # compile video with: `ffmpeg -f image2 -framerate 15 -i %06d.jpg -vcodec libx264 -y movie.mp4 -vf scale=320:-1`
+  write_images: False
+  # dataset (look into tracker/datasets/factory.py)
+  dataset: mot17_train_17
+  # [start percentage, end percentage], e.g., [0.0, 0.5] for train and [0.75, 1.0] for val split.
+  frame_split: [0.0, 1.0]
+
+  tracker:
+    # FRCNN score threshold for detections
+    detection_person_thresh: 0.5
+    # FRCNN score threshold for keeping the track alive
+    regression_person_thresh: 0.5
+    # NMS threshold for detection
+    detection_nms_thresh: 0.3
+    # NMS theshold while tracking
+    regression_nms_thresh: 0.6
+    # use a constant velocity assumption v_t = x_t - x_t-1
+    motion_model: False
+    # DPM or DPM_RAW or 0, raw includes the unfiltered (no nms) versions of the provided detections,
+    # 0 tells the tracker to use private detections (Faster R-CNN)
+    public_detections: True
+    # How much last appearance features are to keep
+    max_features_num: 20
+    # Do camera motion compensation
+    do_align: True
+    # Which warp mode to use (cv2.MOTION_EUCLIDEAN, cv2.MOTION_AFFINE, ...)
+    warp_mode: cv2.MOTION_EUCLIDEAN
+    # maximal number of iterations (original 50)
+    number_of_iterations: 100
+    # Threshold increment between two iterations (original 0.001)
+    termination_eps: 0.00001
+    # Use siamese network to do reid
+    do_reid: True
+    # How much timesteps dead tracks are kept and cosidered for reid
+    inactive_patience: 20
+    # How similar do image and old track need to be to be considered the same person
+    reid_sim_threshold: 0.11698
+    # How much IoU do track and image need to be considered for matching
+    reid_iou_threshold: 0.2

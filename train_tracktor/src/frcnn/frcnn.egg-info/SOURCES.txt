@@ -1,0 +1,7 @@
+README.md
+setup.py
+frcnn/__init__.py
+frcnn.egg-info/PKG-INFO
+frcnn.egg-info/SOURCES.txt
+frcnn.egg-info/dependency_links.txt
+frcnn.egg-info/top_level.txt

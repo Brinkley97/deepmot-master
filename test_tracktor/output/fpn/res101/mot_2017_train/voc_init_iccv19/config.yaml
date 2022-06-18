@@ -1,0 +1,281 @@
+!!python/object/new:easydict.EasyDict
+#==========================================================================
+# This file is under License LGPL-3.0 (see details in the license file).
+# This file is a part of implementation for paper:
+# How To Train Your Deep Multi-Object Tracker.
+# This contribution is headed by Perception research team, INRIA.
+# Contributor(s) : Yihong Xu
+# INRIA contact  : yihong.xu@inria.fr
+# created on 16th April 2020.
+# the code is modified based on:
+# https://github.com/phil-bergmann/tracking_wo_bnw/tree/iccv_19
+#==========================================================================
+dictitems:
+  ANCHOR_RATIOS: &id008
+  - 0.5
+  - 1
+  - 2
+  ANCHOR_SCALES: &id009
+  - 8
+  - 16
+  - 32
+  CROP_RESIZE_WITH_MAX_POOL: false
+  CUDA: true
+  DATA_DIR: /usr/wiss/meinhard/code/tracking_wo_bnw/src/fpn/data
+  DEDUP_BOXES: 0.0625
+  EPS: 1.0e-14
+  EXP_DIR: res101
+  FEAT_STRIDE: &id010
+  - 16
+  FPN_ANCHOR_SCALES: &id011
+  - 32
+  - 64
+  - 128
+  - 256
+  - 512
+  FPN_ANCHOR_STRIDE: 1
+  FPN_FEAT_STRIDES: &id012
+  - 4
+  - 8
+  - 16
+  - 32
+  - 64
+  GPU_ID: 0
+  HAS_MASK: true
+  MATLAB: matlab
+  MAX_NUM_GT_BOXES: 100
+  MOBILENET: &id013 !!python/object/new:easydict.EasyDict
+    dictitems:
+      DEPTH_MULTIPLIER: 1.0
+      FIXED_LAYERS: 5
+      REGU_DEPTH: false
+      WEIGHT_DECAY: 4.0e-05
+    state:
+      DEPTH_MULTIPLIER: 1.0
+      FIXED_LAYERS: 5
+      REGU_DEPTH: false
+      WEIGHT_DECAY: 4.0e-05
+  PIXEL_MEANS: &id014 !!python/object/apply:numpy.core.multiarray._reconstruct
+    args:
+    - !!python/name:numpy.ndarray ''
+    - !!python/tuple
+      - 0
+    - !!binary |
+      Yg==
+    state: !!python/tuple
+    - 1
+    - !!python/tuple
+      - 1
+      - 1
+      - 3
+    - !!python/object/apply:numpy.dtype
+      args:
+      - f8
+      - 0
+      - 1
+      state: !!python/tuple
+      - 3
+      - <
+      - null
+      - null
+      - null
+      - -1
+      - -1
+      - 0
+    - false
+    - !!binary |
+      0LNZ9bm+WUB/arx0k/xcQK+UZYhjsV5A
+  POOLING_MODE: align
+  POOLING_SIZE: 7
+  PYRAM_ROI_C4_SIZE: 224
+  RESNET: &id015 !!python/object/new:easydict.EasyDict
+    dictitems:
+      FIXED_BLOCKS: 1
+      MAX_POOL: false
+    state:
+      FIXED_BLOCKS: 1
+      MAX_POOL: false
+  RNG_SEED: 3
+  ROOT_DIR: /usr/wiss/meinhard/code/tracking_wo_bnw/src/fpn
+  TEST: &id016 !!python/object/new:easydict.EasyDict
+    dictitems:
+      BBOX_CLIP: true
+      BBOX_REG: true
+      HAS_RPN: true
+      MAX_SIZE: 1000
+      MODE: nms
+      NMS: 0.3
+      PROPOSAL_METHOD: gt
+      RPN_MIN_SIZE: 16
+      RPN_NMS_THRESH: 0.7
+      RPN_POST_NMS_TOP_N: 1000
+      RPN_PRE_NMS_TOP_N: 6000
+      RPN_TOP_N: 5000
+      SCALES: &id001
+      - 600
+      SOFT_NMS_METHOD: 1
+      SVM: false
+    state:
+      BBOX_CLIP: true
+      BBOX_REG: true
+      HAS_RPN: true
+      MAX_SIZE: 1000
+      MODE: nms
+      NMS: 0.3
+      PROPOSAL_METHOD: gt
+      RPN_MIN_SIZE: 16
+      RPN_NMS_THRESH: 0.7
+      RPN_POST_NMS_TOP_N: 1000
+      RPN_PRE_NMS_TOP_N: 6000
+      RPN_TOP_N: 5000
+      SCALES: *id001
+      SOFT_NMS_METHOD: 1
+      SVM: false
+  TRAIN: &id017 !!python/object/new:easydict.EasyDict
+    dictitems:
+      ASPECT_CROPPING: false
+      ASPECT_GROUPING: false
+      BATCH_SIZE: 128
+      BBOX_INSIDE_WEIGHTS: &id002
+      - 1.0
+      - 1.0
+      - 1.0
+      - 1.0
+      BBOX_NORMALIZE_MEANS: &id003
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      BBOX_NORMALIZE_STDS: &id004
+      - 0.1
+      - 0.1
+      - 0.2
+      - 0.2
+      BBOX_NORMALIZE_TARGETS: true
+      BBOX_NORMALIZE_TARGETS_PRECOMPUTED: true
+      BBOX_REG: true
+      BBOX_THRESH: 0.5
+      BG_THRESH_HI: 0.5
+      BG_THRESH_LO: 0.0
+      BIAS_DECAY: false
+      BN_TRAIN: false
+      DISPLAY: 20
+      DOUBLE_BIAS: false
+      FG_FRACTION: 0.25
+      FG_THRESH: 0.5
+      GAMMA: 0.1
+      HAS_RPN: true
+      IMS_PER_BATCH: 1
+      LEARNING_RATE: 0.001
+      MAX_SIZE: 1000
+      MOMENTUM: 0.9
+      PROPOSAL_METHOD: gt
+      RPN_BATCHSIZE: 256
+      RPN_BBOX_INSIDE_WEIGHTS: &id005
+      - 1.0
+      - 1.0
+      - 1.0
+      - 1.0
+      RPN_CLOBBER_POSITIVES: false
+      RPN_FG_FRACTION: 0.5
+      RPN_MIN_SIZE: 8
+      RPN_NEGATIVE_OVERLAP: 0.3
+      RPN_NMS_THRESH: 0.7
+      RPN_POSITIVE_OVERLAP: 0.7
+      RPN_POSITIVE_WEIGHT: -1.0
+      RPN_POST_NMS_TOP_N: 2000
+      RPN_PRE_NMS_TOP_N: 12000
+      SCALES: &id006
+      - 600
+      SNAPSHOT_ITERS: 5000
+      SNAPSHOT_KEPT: 3
+      SNAPSHOT_PREFIX: res101_faster_rcnn
+      STEPSIZE: &id007
+      - 30000
+      SUMMARY_INTERVAL: 180
+      TRIM_HEIGHT: 600
+      TRIM_WIDTH: 600
+      TRUNCATED: false
+      USE_ALL_GT: true
+      USE_FLIPPED: true
+      USE_GT: false
+      WEIGHT_DECAY: 0.0001
+    state:
+      ASPECT_CROPPING: false
+      ASPECT_GROUPING: false
+      BATCH_SIZE: 128
+      BBOX_INSIDE_WEIGHTS: *id002
+      BBOX_NORMALIZE_MEANS: *id003
+      BBOX_NORMALIZE_STDS: *id004
+      BBOX_NORMALIZE_TARGETS: true
+      BBOX_NORMALIZE_TARGETS_PRECOMPUTED: true
+      BBOX_REG: true
+      BBOX_THRESH: 0.5
+      BG_THRESH_HI: 0.5
+      BG_THRESH_LO: 0.0
+      BIAS_DECAY: false
+      BN_TRAIN: false
+      DISPLAY: 20
+      DOUBLE_BIAS: false
+      FG_FRACTION: 0.25
+      FG_THRESH: 0.5
+      GAMMA: 0.1
+      HAS_RPN: true
+      IMS_PER_BATCH: 1
+      LEARNING_RATE: 0.001
+      MAX_SIZE: 1000
+      MOMENTUM: 0.9
+      PROPOSAL_METHOD: gt
+      RPN_BATCHSIZE: 256
+      RPN_BBOX_INSIDE_WEIGHTS: *id005
+      RPN_CLOBBER_POSITIVES: false
+      RPN_FG_FRACTION: 0.5
+      RPN_MIN_SIZE: 8
+      RPN_NEGATIVE_OVERLAP: 0.3
+      RPN_NMS_THRESH: 0.7
+      RPN_POSITIVE_OVERLAP: 0.7
+      RPN_POSITIVE_WEIGHT: -1.0
+      RPN_POST_NMS_TOP_N: 2000
+      RPN_PRE_NMS_TOP_N: 12000
+      SCALES: *id006
+      SNAPSHOT_ITERS: 5000
+      SNAPSHOT_KEPT: 3
+      SNAPSHOT_PREFIX: res101_faster_rcnn
+      STEPSIZE: *id007
+      SUMMARY_INTERVAL: 180
+      TRIM_HEIGHT: 600
+      TRIM_WIDTH: 600
+      TRUNCATED: false
+      USE_ALL_GT: true
+      USE_FLIPPED: true
+      USE_GT: false
+      WEIGHT_DECAY: 0.0001
+  USE_GPU_NMS: true
+state:
+  ANCHOR_RATIOS: *id008
+  ANCHOR_SCALES: *id009
+  CROP_RESIZE_WITH_MAX_POOL: false
+  CUDA: true
+  DATA_DIR: /usr/wiss/meinhard/code/tracking_wo_bnw/src/fpn/data
+  DEDUP_BOXES: 0.0625
+  EPS: 1.0e-14
+  EXP_DIR: res101
+  FEAT_STRIDE: *id010
+  FPN_ANCHOR_SCALES: *id011
+  FPN_ANCHOR_STRIDE: 1
+  FPN_FEAT_STRIDES: *id012
+  GPU_ID: 0
+  HAS_MASK: true
+  MATLAB: matlab
+  MAX_NUM_GT_BOXES: 100
+  MOBILENET: *id013
+  PIXEL_MEANS: *id014
+  POOLING_MODE: align
+  POOLING_SIZE: 7
+  PYRAM_ROI_C4_SIZE: 224
+  RESNET: *id015
+  RNG_SEED: 3
+  ROOT_DIR: /usr/wiss/meinhard/code/tracking_wo_bnw/src/fpn
+  TEST: *id016
+  TRAIN: *id017
+  USE_GPU_NMS: true

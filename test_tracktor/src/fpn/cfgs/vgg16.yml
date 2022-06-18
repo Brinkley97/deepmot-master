@@ -1,0 +1,26 @@
+#==========================================================================
+# This file is under License LGPL-3.0 (see details in the license file).
+# This file is a part of implementation for paper:
+# How To Train Your Deep Multi-Object Tracker.
+# This contribution is headed by Perception research team, INRIA.
+# Contributor(s) : Yihong Xu
+# INRIA contact  : yihong.xu@inria.fr
+# created on 16th April 2020.
+# the code is modified based on:
+# https://github.com/phil-bergmann/tracking_wo_bnw/tree/iccv_19
+# https://github.com/jwyang/faster-rcnn.pytorch/
+#==========================================================================
+EXP_DIR: vgg16
+TRAIN:
+  HAS_RPN: True
+  BBOX_NORMALIZE_TARGETS_PRECOMPUTED: True
+  RPN_POSITIVE_OVERLAP: 0.7
+  RPN_BATCHSIZE: 256
+  PROPOSAL_METHOD: gt
+  BG_THRESH_LO: 0.0
+  BATCH_SIZE: 256
+  LEARNING_RATE: 0.01
+TEST:
+  HAS_RPN: True
+POOLING_MODE: align
+CROP_RESIZE_WITH_MAX_POOL: False

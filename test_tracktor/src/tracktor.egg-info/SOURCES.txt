@@ -1,0 +1,15 @@
+README.md
+src/tracktor/__init__.py
+src/tracktor/config.py
+src/tracktor/fpn.py
+src/tracktor/frcnn.py
+src/tracktor/oracle_tracker.py
+src/tracktor/resnet.py
+src/tracktor/solver.py
+src/tracktor/tracker.py
+src/tracktor/triplet_loss.py
+src/tracktor/utils.py
+src/tracktor.egg-info/PKG-INFO
+src/tracktor.egg-info/SOURCES.txt
+src/tracktor.egg-info/dependency_links.txt
+src/tracktor.egg-info/top_level.txt
